@@ -1,0 +1,28 @@
+.tabs-menu{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    justify-content: center;
+    li{
+        padding: 10px;
+        color: var(--dark-blue);
+        cursor: pointer;
+        font-size: 1.4rem;
+        transition: .3s all;
+    }
+    li.active{
+        background-color: var(--dark-blue);
+        color: var(--low-yellow);
+    }
+    li:hover{
+        color: var(--low-yellow);
+        text-decoration: none;
+        transition: .3s all;
+    }
+    li:first-child{
+        border-right: 2px solid var(--low-yellow);
+    }
+}

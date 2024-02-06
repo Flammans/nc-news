@@ -1,0 +1,37 @@
+.article-short, .article-full{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.article-picture{
+    width: auto;
+    max-width: 50%;
+    min-width: 250px;
+    overflow: hidden;
+    padding: 15px;
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        min-width: 250px;
+    }
+}
+.article-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    min-width: 250px;
+}
+.article-name, .article-topic, .article-desc {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 5px;
+    text-align: left;
+}
