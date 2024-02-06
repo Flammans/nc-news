@@ -1,0 +1,14 @@
+:root {
+    --dark-gray: #303134;
+    --light-gray: #5f6368;
+    --text-color: #e8eaed;
+    --dark-blue: #2d3142;
+    --light-yellow: #FFDEA9;
+    --button-padding: 10px 20px;
+    --border-radius: 8px;
+    --font-size: 1.4rem;
+    --transition: all .3s;
+    --min-width: 100px;
+    --margin: 20px auto;
+    --low-yellow: #FFDEA9;
+}
