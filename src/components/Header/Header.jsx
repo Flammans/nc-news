@@ -1,10 +1,15 @@
 import React from 'react';
 import './Header.css';
+import Logo from '../Logo/Logo.jsx';
+import Nav from '../Nav/Nav.jsx';
 
-const Header = ({ title }) => {
+const Header = () => {
   return (
     <header className={'header'}>
-      <h1>{title}</h1>
+      <div className="header-content">
+        <Logo />
+        <Nav />
+      </div>
     </header>
   );
 };

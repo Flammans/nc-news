@@ -14,15 +14,10 @@
         transition: .3s all;
     }
     li.active{
-        background-color: var(--dark-blue);
-        color: var(--low-yellow);
-    }
-    li:hover{
-        color: var(--low-yellow);
-        text-decoration: none;
-        transition: .3s all;
+        background-color: var(--low-red);
+        color: #fff;
     }
     li:first-child{
-        border-right: 2px solid var(--low-yellow);
+        border-right: 2px solid var(--dark-blue);
     }
 }

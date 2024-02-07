@@ -1,0 +1,14 @@
+.comments {
+    list-style: none;
+    margin: var(--margin);
+    padding: 0 10px;
+    li {
+        border-bottom: 1px solid var(--light-red);
+        padding: 10px 0;
+        color: var(--text-color);
+    }
+
+    li:last-child {
+        border-bottom: none;
+    }
+}

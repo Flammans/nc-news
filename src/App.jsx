@@ -11,20 +11,11 @@ import Main from './components/Main/Main.jsx';
 import Article from './components/Article/Article.jsx';
 
 function App() {
-  const defaultTitle =  'NC News';
-  const navLinks = [
-    {name: 'Home', to: '/'},
-    {name: 'New', to: '/new'},
-    {name: 'Log In', to: '/log-in'},
-  ];
-
-  // const [popularArticles, setPopularArticles] = useState([]);
   const [user, setUser] = useState([]);
-
 
   return (
     <>
-      <Header title={defaultTitle} navLinks={navLinks}/>
+      <Header/>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/new" element={<CreateArticle />}/>
