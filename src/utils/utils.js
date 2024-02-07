@@ -6,10 +6,13 @@ export const userNameRegex = /^[A-Za-z0-9]+$/;
 export const userNameRegexFindNumber = /[0-9]/;
 export const userNameRegexFindLetter = /[A-Za-z]/;
 
-export const API = 'https://api.nc-news.viktorkhasenko.com/api/';
+const api = axios.create({
+  baseURL: 'https://api.nc-news.viktorkhasenko.com/api/',
+  timeout: 90_000,
+});
 
 export const fetchUserByUserName = (username) => {
-  return axios.get(`${API}users/${encodeURIComponent(username)}`)
+  return api.get(`users/${encodeURIComponent(username)}`)
     .then((response) => {
       return response.data.user;
     }).catch((error)=>{
@@ -22,7 +25,7 @@ export const createNewUser = (userName, userAvatar) => {
     username: userName,
     avatar_url: userAvatar
   }
-  return axios.post(API + 'users', userData).then((response) => {
+  return api.post('users', userData).then((response) => {
     return response.data.user;
   }).catch((error)=>{
     console.log('Error creating new user', error);
@@ -31,7 +34,7 @@ export const createNewUser = (userName, userAvatar) => {
 }
 
 export const fetchArticles = (query = '') => {
-  return axios.get(`${API}articles?title=${encodeURIComponent(query)}`)
+  return api.get(`articles?title=${encodeURIComponent(query)}`)
     .then((response) => {
       return response.data.articles;
     }).catch((error)=>{
@@ -40,7 +43,7 @@ export const fetchArticles = (query = '') => {
 };
 
 export const fetchArticleByArticleId = (article_id) => {
-  return axios.get(`${API}articles/${encodeURIComponent(article_id)}`)
+  return api.get(`articles/${encodeURIComponent(article_id)}`)
     .then((response) => {
       return response.data.article;
     }).catch((error)=>{
@@ -49,10 +52,11 @@ export const fetchArticleByArticleId = (article_id) => {
 };
 
 export const fetchCommentsByArticleId = (article_id) => {
-  return axios.get(`${API}articles/${encodeURIComponent(article_id)}/comments`)
+  return api.get(`articles/${encodeURIComponent(article_id)}/comments`)
     .then((response) => {
       return response.data.comments;
     }).catch((error)=>{
       console.log('Error fetching data', error);
     })
 };
+
