@@ -1,19 +1,18 @@
-.article-short, .article-full{
+.article{
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 .article-picture{
-    width: auto;
-    max-width: 50%;
-    min-width: 250px;
+    width: 100%;
     overflow: hidden;
     padding: 15px;
+    height: 300px;
     img {
-        max-width: 100%;
+        width: 100%;
         height: auto;
         display: block;
-        min-width: 250px;
     }
 }
 .article-content{
@@ -34,4 +33,9 @@ img {
     align-items: flex-start;
     margin: 5px;
     text-align: left;
+}
+.article-topic{
+    b{
+        padding-right: 10px;
+    }
 }

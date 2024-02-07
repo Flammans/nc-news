@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Article.css';
 import { useParams } from 'react-router-dom';
 import { fetchArticleByArticleId } from '../../utils/utils.js';
+import Comments from '../Comments/Comments.jsx';
 
 const Article = ({ article:data }) => {
   const { article_id } = useParams();
@@ -24,7 +25,8 @@ const Article = ({ article:data }) => {
       {isLoading ? (
         <p>Loading...</p>
       ): (
-        <section className={ article_id ? 'article-full' : 'article-short' }>
+        <section className={ article_id ? 'article article-full' : 'article article-short' }>
+          { article_id && (<h1 className="page-title">{article.title}</h1>) }
           <picture className="article-picture">
             <img src={article.article_img_url} alt={article.title} onError={(err) => {
               err.target.onError = null;
@@ -32,7 +34,7 @@ const Article = ({ article:data }) => {
             }}/>
           </picture>
           <div className="article-content">
-            <h2 className="article-name">{article.title}</h2>
+            { !article_id && (<h2 className="article-name">{article.title}</h2>)}
             {article.body && (
               <p className="article-desc">
               {article.body}
@@ -40,10 +42,13 @@ const Article = ({ article:data }) => {
             )}
             <p>
               <span className="article-topic">
-                <b>Topic:</b> {article.topic}
+                <b>Topic: </b> {article.topic}
               </span>
             </p>
           </div>
+
+          { article_id && (<Comments articleId={article_id} />) }
+
         </section>
       )}
     </>

@@ -47,3 +47,12 @@ export const fetchArticleByArticleId = (article_id) => {
       console.log('Error fetching data', error);
     })
 };
+
+export const fetchCommentsByArticleId = (article_id) => {
+  return axios.get(`${API}articles/${encodeURIComponent(article_id)}/comments`)
+    .then((response) => {
+      return response.data.comments;
+    }).catch((error)=>{
+      console.log('Error fetching data', error);
+    })
+};
