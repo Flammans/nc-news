@@ -1,14 +1,27 @@
 import React from 'react';
 import './Login.scss';
 import { fetchUserByUserName } from '../../utils/utils.js';
+import { setUser } from '../../stores/auth.store.js';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-const Login = ({ setUser }) => {
+const Login = ({ }) => {
 
   const [username, setUsername] = React.useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
-    fetchUserByUserName(username).then((userData) => setUser(userData));
+    fetchUserByUserName(username).then((userData) => {
+      if(userData){
+        dispatch(setUser(userData))
+        navigate('/');
+      } else {
+        alert('error')
+      }
+
+    });
   };
 
   return (
@@ -19,7 +32,7 @@ const Login = ({ setUser }) => {
                className="img-fluid" alt="Phone image"/>
         </div>
         <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleLogin}>
             <div className="form-outline mb-4">
 
               <label htmlFor="user-name" className="form-label">User Name:</label>
