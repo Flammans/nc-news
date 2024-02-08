@@ -16,7 +16,7 @@ const Main = () => {
 
   return (
     <div className={'main'}>
-      <h1 className={'page-title'}>News</h1>
+      <h1 className={'page-title'}>Latest News</h1>
       {isLoading ? (
         <p>Loading...</p>
       ) : (

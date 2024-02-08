@@ -1,0 +1,52 @@
+$article-space: 20px;
+
+%flex_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bd-placeholder-img{
+    width: 200px;
+    height: 260px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.blog-post-meta{
+    text-align: right;
+    font-size: 14px;
+    color: #b4b7c1;
+}
+.article{
+    &-vote {
+        @extend %flex_center;
+    }
+    &-votes {
+        @extend %flex_center;
+        color: var(--dark-gray);
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+    &-vote-btn {
+        background-color: transparent;
+        border: none;
+        color: var(--light-gray);
+        cursor: pointer;
+        font-size: var(--font-size);
+        padding: 0;
+        margin: 0 5px;
+        border-radius: 50%;
+        transition: var(--transition);
+        width: $article-space * 2.5;
+        height: $article-space * 2.5;
+
+        &:hover, &:focus {
+            color: var(--light-red);
+            outline: 0;
+            border: none;
+        }
+    }
+}

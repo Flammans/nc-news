@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Header.css';
-import Logo from '../Logo/Logo.jsx';
 import Nav from '../Nav/Nav.jsx';
 
 const Header = () => {
+
   return (
     <header className={'header'}>
-      <div className="header-content">
-        <Logo />
-        <Nav />
+      <div className="container">
+        <div className="row">
+          <Nav/>
+        </div>
       </div>
     </header>
   );

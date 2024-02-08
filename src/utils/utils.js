@@ -60,3 +60,20 @@ export const fetchCommentsByArticleId = (article_id) => {
     })
 };
 
+export const updateArticleVote = (article_id, inc_votes) => {
+  return api.patch(`articles/${encodeURIComponent(article_id)}`, { inc_votes })
+    .then((response) => {
+      return response.data.article;
+    }).catch((error)=>{
+      console.log('Error update data', error);
+    })
+};
+
+export const updateCommentVote = (comment_id, inc_votes) => {
+  return api.patch(`comments/${encodeURIComponent(comment_id)}`, { inc_votes })
+    .then((response) => {
+      return response.data.comment;
+    }).catch((error)=>{
+      console.log('Error update data', error);
+    })
+};

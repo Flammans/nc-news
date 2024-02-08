@@ -2,10 +2,11 @@
     display: inline-flex;
     max-width: 160px;
     flex-direction: column;
-    svg{
-        width: 100%;
-    }
+    font-size: 2rem;
     span{
         color: #1a1a1a;
+    }
+    b{
+        color: var(--light-red) ;
     }
 }

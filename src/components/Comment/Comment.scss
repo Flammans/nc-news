@@ -1,0 +1,124 @@
+$border-color: #edeff2;
+$comment-radius: 2px;
+$default-font-size: 13px;
+$comment-space: 20px;
+
+%flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.be-comment-block {
+  margin-bottom: $comment-space * 3;
+  border-radius: $comment-radius;
+  padding: $comment-space * 3 0;
+  border: 1px solid #ffffff;
+}
+.be-comment{
+  position: relative;
+}
+.comments-title {
+  font-size: $default-font-size + 3px;
+  color: #262626;
+  margin-bottom: $comment-space;
+}
+
+.be-img-comment, .be-ava-comment {
+  width: $comment-space * 4;
+  height: $comment-space * 4;
+  margin-bottom: $comment-space;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.be-ava-comment {
+  border-radius: 50%;
+}
+
+.be-comment-content {
+  @media (min-width: 768px) {
+    margin-left: $comment-space * 6;
+  }
+
+  flex-direction: row;
+
+  .be-comment-header {
+    @extend %flex_center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: $comment-space;
+  }
+
+  a {
+    color: #383b43;
+  }
+}
+
+.be-comment-name {
+  font-size: $default-font-size;
+}
+
+.be-comment-time {
+  text-align: right;
+  font-size: $default-font-size - 2px;
+  color: #b4b7c1;
+}
+
+.be-comment-text {
+  font-size: $default-font-size;
+  line-height: $comment-space + 3px;
+  color: #7a8192;
+  display: block;
+  background: #f6f6f7;
+  border: 1px solid $border-color;
+  padding: $comment-space 60px $comment-space $comment-space;
+}
+
+.form-group.with-icon .form-input {
+  padding-left: $comment-space * 5;
+}
+
+.form-group textarea.form-input {
+  height: $comment-space * 10;
+}
+
+.be-comment-vote {
+  position: absolute;
+  @extend %flex_center;
+  right: 0;
+  bottom: 0;
+}
+
+.be-comment-votes {
+  @extend %flex_center;
+  color: var(--dark-gray);
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.be-comment-vote-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--light-gray);
+  cursor: pointer;
+  font-size: var(--font-size);
+  padding: 0;
+  margin: 0 5px;
+  border-radius: 50%;
+  transition: var(--transition);
+  width: $comment-space * 2.5;
+  height: $comment-space * 2.5;
+
+  &:hover, &:focus {
+    color: var(--light-red);
+    outline: 0;
+    border: none;
+  }
+}
