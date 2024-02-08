@@ -1,20 +1,10 @@
-nav{
-    display: inline-flex;
+.menu-vertical{
     a{
-        margin: 0 15px;
-        color: var(--dark-blue);
-        border-bottom: 2px solid transparent;
-        transition: all .3s;
+        color: #1a1a1a;
+        background: none;
     }
-    a:first-child{
-        margin-left: 0;
-    }
-    a:last-child{
-        margin-right: 0;
-    }
-    a:hover, a.active{
-        color: var(--low-red);
-        border-color: var(--low-red);
-        transition: all .3s;
+    a:hover{
+        color: #ff0000;
+        background: none;
     }
 }
