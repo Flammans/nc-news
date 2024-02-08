@@ -1,10 +1,21 @@
 import React, { useEffect } from 'react';
 import './Nav.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Collapse } from 'bootstrap';
 import Logo from '../Logo/Logo.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../stores/auth.store.js';
 
 const Nav = () => {
+
+  const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/');
+  }
 
   useEffect(() => {
     document.querySelectorAll('.collapse').forEach(collapseEl => new Collapse(collapseEl, {
@@ -27,9 +38,23 @@ const Nav = () => {
             <li className="nav-item">
               <NavLink to="/new" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>New Article</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink to="/log-in" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Log In</NavLink>
-            </li>
+
+            {user ? (
+              <>
+                <li className="nav-item">
+                  <NavLink to="/profile" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>{user.username}</NavLink>
+                </li>
+                <li className="nav-item">
+                  <span className='nav-link' onClick={() => handleLogout()}>Log out</span>
+                </li>
+              </>
+            ) : (
+              <li className="nav-item">
+                <NavLink to="/log-in" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Log In</NavLink>
+              </li>
+            )}
+
+
           </ul>
           <form className="d-flex" role="search">
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>

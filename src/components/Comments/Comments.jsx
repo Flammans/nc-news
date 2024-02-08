@@ -11,7 +11,7 @@ const Comments = ({ articleId }) => {
 
   useEffect(() => {
     fetchCommentsByArticleId(articleId).then((items) => {
-      setComments(items);
+      setComments(items.reverse());
       setIsLoading(false);
     });
   }, []);
@@ -29,7 +29,7 @@ const Comments = ({ articleId }) => {
               )
             )}
 
-            <CreateCommentForm />
+            <CreateCommentForm articleId={articleId} comments={comments} setComments={setComments}/>
           </div>
         </div>
         )
