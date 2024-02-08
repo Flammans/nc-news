@@ -8,7 +8,7 @@ const Articles = ({articles}) => {
   return (
     <ul className={'list-of-articles'}>
       {articles.map(article => (
-        <li className="article-preview" key={article.title}>
+        <li key={article.title}>
           <Link to={'articles/' + article.article_id}>
             <Article article={article}/>
           </Link>

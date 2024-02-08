@@ -39,3 +39,11 @@ img {
         padding-right: 10px;
     }
 }
+
+.card {
+    width: 100%;
+    figure{
+        width: 160px;
+        height: 140px;
+    }
+}
