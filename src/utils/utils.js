@@ -86,3 +86,12 @@ export const createComment = (article_id, username, body) => {
       console.log('Error create new comment', error);
     })
 };
+
+export const deleteComment = (comment_id) => {
+  return api.delete(`comments/${encodeURIComponent(comment_id)}`)
+    .then((response) => {
+      return response.status;
+    }).catch((error)=>{
+      console.log('Error update data', error);
+    })
+};

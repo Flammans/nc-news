@@ -3,6 +3,7 @@ import './Comments.css';
 import { fetchCommentsByArticleId } from '../../utils/utils.js';
 import Comment from '../Comment/Comment.jsx';
 import CreateCommentForm from '../CreateCommentForm/CreateCommentForm.jsx';
+import comment from '../Comment/Comment.jsx';
 
 const Comments = ({ articleId }) => {
 
@@ -16,6 +17,10 @@ const Comments = ({ articleId }) => {
     });
   }, []);
 
+  const removeComment = (commentId) => {
+    setComments(comments.filter(comment => comment.comment_id !== commentId));
+  }
+
   return (<>
       {isLoading ? (
         <p>Loading...</p>
@@ -25,11 +30,11 @@ const Comments = ({ articleId }) => {
             <h3 className="comments-title">Comments ({comments.length})</h3>
 
             {comments.map(comment => (
-              <Comment comment={comment}  key={comment.comment_id}/>
+              <Comment comment={comment}  key={comment.comment_id} removeComment={removeComment} />
               )
             )}
 
-            <CreateCommentForm articleId={articleId} comments={comments} setComments={setComments}/>
+            <CreateCommentForm articleId={articleId} comments={comments} setComments={setComments} />
           </div>
         </div>
         )

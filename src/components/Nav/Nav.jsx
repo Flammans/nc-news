@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './Nav.css';
+import './Nav.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Collapse } from 'bootstrap';
 import Logo from '../Logo/Logo.jsx';
@@ -31,35 +31,35 @@ const Nav = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-0 ms-auto mb-2 mb-lg-0 ">
+          <ul className="navbar-nav me-0 ms-auto mb-2 mb-lg-0 d-flex align-items-center">
             <li className="nav-item">
               <NavLink to="/" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Home</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink to="/new" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>New Article</NavLink>
-            </li>
+            {/*<li className="nav-item">*/}
+            {/*  <NavLink to="/new" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>New Article</NavLink>*/}
+            {/*</li>*/}
 
             {user ? (
-              <>
-                <li className="nav-item">
-                  <NavLink to="/profile" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>{user.username}</NavLink>
-                </li>
-                <li className="nav-item">
-                  <span className='nav-link' onClick={() => handleLogout()}>Log out</span>
-                </li>
-              </>
+              <li className="nav-item">
+                <span className="nav-link nav-link-log-out" onClick={() => handleLogout()}>Log out</span>
+              </li>
             ) : (
               <li className="nav-item">
                 <NavLink to="/log-in" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Log In</NavLink>
               </li>
             )}
 
+            {user && (
+              <NavLink to={'/profile/' + user.username } className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
+                <img width="36" height="36" src={`https://api.multiavatar.com/${user.username}.svg`} alt="User Avatar"/>
+              </NavLink>
+            ) }
 
           </ul>
-          <form className="d-flex" role="search">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          {/*<form className="d-flex" role="search">*/}
+          {/*  <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>*/}
+          {/*  <button className="btn btn-outline-success" type="submit">Search</button>*/}
+          {/*</form>*/}
         </div>
       </div>
     </nav>

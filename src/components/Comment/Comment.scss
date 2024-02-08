@@ -122,3 +122,32 @@ $comment-space: 20px;
     border: none;
   }
 }
+.be-comment-delete{
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+  background-color: var(--light-red);
+  right: -15px;
+  top: 25px;
+  padding: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0 10px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  transition: all .3s;
+  &:hover{
+    color: var(--light-red);
+    background-color: #fff;
+    border-color: var(--light-red);
+    box-sizing: border-box;
+    transition: all .3s;
+  }
+}
+.be-comment-date{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
