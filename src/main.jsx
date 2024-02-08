@@ -10,6 +10,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={authStore}>
     <BrowserRouter>
       <App />
-    </BrowserRouter>,
-  </Provider>,
+    </BrowserRouter>
+  </Provider>
 )

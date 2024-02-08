@@ -7,6 +7,7 @@ import CreateArticle from './components/CreateArticle/CreateArticle.jsx';
 import Authorisation from './components/Authorisation/Authorisation.jsx';
 import Main from './components/Main/Main.jsx';
 import Article from './components/Article/Article.jsx';
+import Profile from './components/Profile/Profile.jsx';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/new" element={<CreateArticle />}/>
         <Route path="/log-in" element={<Authorisation />}/>
         <Route path="/articles/:article_id" element={<Article />}/>
+        <Route path="/profile/:username" element={<Profile />}/>
       </Routes>
       <Footer />
     </>

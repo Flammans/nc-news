@@ -1,0 +1,20 @@
+.profile{
+  section{
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      b {
+        color: #555;
+        margin-right: 10px;
+      }
+    }
+    img.avatar {
+      display: block;
+      max-width: 100px;
+      height: auto;
+      border-radius: 50%;
+      margin: 0 auto;
+    }
+  }
+}
