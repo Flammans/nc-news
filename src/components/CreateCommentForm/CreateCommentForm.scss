@@ -6,16 +6,25 @@ $comment-space: 20px;
   font-size: $comment-space;
   line-height: $comment-space * 4;
   font-weight: 400;
-  color: #b4b7c1;
+  color: var(--dark-gray);
   width: 100%;
   height: $comment-space * 4;
   padding-left: $comment-space + 5px;
   border: 1px solid $border-color;
   border-radius: 3px;
+  &:focus{
+    outline-color: green;
+  }
 }
 .be-comment-block {
   .btn{
     max-width: 120px;
     margin: auto;
+    background-color: green;
+    color: #fff;
+    &:hover{
+      color: green;
+      border-color: green;
+    }
   }
 }

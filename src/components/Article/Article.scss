@@ -20,8 +20,14 @@ $article-space: 20px;
     color: #b4b7c1;
 }
 .article{
+    &-picture{
+        @media (min-width: 768px) {
+            max-width: 320px;
+        }
+    }
     &-vote {
-        @extend %flex_center;
+        display: flex;
+        justify-content: flex-end;
     }
     &-votes {
         @extend %flex_center;

@@ -29,7 +29,7 @@ const Comments = ({ articleId }) => {
               )
             )}
 
-            <CreateCommentForm />
+            <CreateCommentForm articleId={articleId} comments={comments} setComments={setComments}/>
           </div>
         </div>
         )

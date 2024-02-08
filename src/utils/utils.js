@@ -77,3 +77,12 @@ export const updateCommentVote = (comment_id, inc_votes) => {
       console.log('Error update data', error);
     })
 };
+
+export const createComment = (article_id, username, body) => {
+  return api.post(`articles/${encodeURIComponent(article_id)}/comments`, { username, body })
+    .then((response) => {
+      return response.data.comment;
+    }).catch((error)=>{
+      console.log('Error create new comment', error);
+    })
+};

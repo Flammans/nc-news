@@ -1,26 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import './CreateCommentForm.scss';
+import { createComment } from '../../utils/utils.js';
 
-const CreateCommentForm = () => {
+const CreateCommentForm = ({articleId, comments, setComments}) => {
+
+const [userName, setUserName] = useState('');
+const [commentBody, setCommentBody] = useState('');
+
+const formHandle = (e) => {
+  e.preventDefault();
+  createComment(articleId, userName, commentBody).then((response) => {
+    setComments([...comments, response]);
+    setUserName('');
+    setCommentBody('');
+  })
+};
 
   return (
-    <form className="form-block">
+    <form className="form-block" onSubmit={formHandle}>
       <div className="row">
         <div className="col-12 mb-4">
           <div className="form-group">
-            <input className="form-input" type="text" placeholder="Your name" />
+            <label className="comment-label mb-2 fs-4" htmlFor='comment'>Comment</label>
+            <textarea
+              id="comment"
+              className="form-input"
+              placeholder="Your text"
+              value={commentBody}
+              onChange={({ target }) => {
+                setCommentBody(target.value);
+              }}
+              required
+            ></textarea>
           </div>
         </div>
-        <div className="col-12 mb-4">
-          <div className="form-group">
-            <textarea className="form-input" required="" placeholder="Your text"></textarea>
-          </div>
-        </div>
-        <button className="btn btn-primary">submit</button>
+        <button className="btn btn-form">Comment</button>
       </div>
     </form>
   )
-
 };
 
 export default CreateCommentForm;

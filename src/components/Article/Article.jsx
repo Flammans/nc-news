@@ -36,9 +36,8 @@ const Article = ({ article:data }) => {
             <article className="blog-post">
               <h1 className="mb-5">{article.title} <span className="badge text-bg-warning">{article.topic}</span></h1>
 
-
               <div className="article-content clearfix mb-3">
-                <picture className="article-picture rounded float-start img-thumbnail me-lg-3">
+                <picture className="article-picture rounded float-start me-md-3 mb-3">
                   <img className="mw-100" src={article.article_img_url} alt={article.title} onError={(err) => {
                     err.target.onError = null;
                     err.target.src = 'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
