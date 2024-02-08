@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Comments.css';
 import { fetchCommentsByArticleId } from '../../utils/utils.js';
 import Comment from '../Comment/Comment.jsx';
+import CreateCommentForm from '../CreateCommentForm/CreateCommentForm.jsx';
 
 const Comments = ({ articleId }) => {
 
@@ -16,19 +17,25 @@ const Comments = ({ articleId }) => {
   }, []);
 
   return (<>
-    {isLoading ? (
-      <p>Loading...</p>
-    ) : (
-      <ul className={'comments'}>
-        {comments.map(comment => (
-            <li key={comment.comment_id}>
-              <Comment comment={comment}/>
-            </li>
-          )
-        )}
-      </ul>)
-    }
-  </>);
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="container">
+          <div className="be-comment-block">
+            <h3 className="comments-title">Comments ({comments.length})</h3>
+
+            {comments.map(comment => (
+              <Comment comment={comment}  key={comment.comment_id}/>
+              )
+            )}
+
+            <CreateCommentForm />
+          </div>
+        </div>
+        )
+      }
+    </>
+  );
 };
 
 export default Comments;

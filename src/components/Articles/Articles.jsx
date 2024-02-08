@@ -6,16 +6,14 @@ import { Link } from 'react-router-dom';
 const Articles = ({articles}) => {
 
   return (
-    <ul className={'list-of-articles'}>
+    <div className='row'>
       {articles.map(article => (
-        <li className="article-preview" key={article.title}>
-          <Link to={'articles/' + article.article_id}>
-            <Article article={article}/>
-          </Link>
-        </li>
+        <Link to={'articles/' + article.article_id} key={article.title} className="col-md-6">
+          <Article article={article}/>
+        </Link>
         )
       )}
-    </ul>
+    </div>
   );
 }
 
