@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import './CreateNewUser.css';
 import { createNewUser, urlRegex, userNameRegex, userNameRegexFindLetter, userNameRegexFindNumber } from '../../utils/utils.js';
+import { setUser } from '../../stores/auth.store.js';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-const CreateNewUser = ({ setUser }) => {
+const CreateNewUser = () => {
 
   const [userName, setUserName] = useState('');
   const [userNameError, setUserNameError] = useState(false);
   const [userAvatar, setUserAvatar] = useState('');
   const [userAvatarError, setUserAvatarError] = useState(false);
+  const dispatch = useDispatch();
+  const [errorAlert, setErrorAlert] = useState(null);
+  const navigate = useNavigate();
+
 
   const validateUsername = () => {
 
@@ -38,10 +45,19 @@ const CreateNewUser = ({ setUser }) => {
 
     if (validateUsername() && validateAvatarUrl()) {
 
-      createNewUser().then((user) => setUser(user));
+      createNewUser(userName, userAvatar).then((user) => {
+        if(user) {
+          dispatch(setUser(user));
+          navigate('/')
+        } else {
+          setErrorAlert('Sorry, registration not available');
+        }
+      });
+
     }
 
   };
+
 
   return (
     <div className="row d-flex align-items-center justify-content-center h-100">
@@ -65,6 +81,7 @@ const CreateNewUser = ({ setUser }) => {
                 setUserName(target.value);
                 validateUsername();
               }}
+              autoComplete="off"
               required/>
             {userNameError && (
               <div className="alert alert-warning d-flex align-items-center  mt-2" role="alert">
@@ -95,6 +112,13 @@ const CreateNewUser = ({ setUser }) => {
           </div>
 
           <button type="submit" className="btn btn-primary btn-lg btn-block">Sign in</button>
+
+          { errorAlert && (
+            <div className="alert alert-danger mt-4" role="alert">
+              {errorAlert}
+            </div>
+          )}
+
         </form>
       </div>
     </div>);

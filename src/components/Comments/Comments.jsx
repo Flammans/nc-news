@@ -11,7 +11,7 @@ const Comments = ({ articleId }) => {
 
   useEffect(() => {
     fetchCommentsByArticleId(articleId).then((items) => {
-      setComments(items);
+      setComments(items.reverse());
       setIsLoading(false);
     });
   }, []);

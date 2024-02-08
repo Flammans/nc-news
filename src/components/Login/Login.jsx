@@ -5,7 +5,7 @@ import { setUser } from '../../stores/auth.store.js';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ }) => {
+const Login = () => {
 
   const [username, setUsername] = React.useState('');
   const dispatch = useDispatch();

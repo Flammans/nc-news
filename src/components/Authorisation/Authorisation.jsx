@@ -3,7 +3,7 @@ import './Authorisation.scss';
 import Login from '../Login/Login.jsx';
 import CreateNewUser from '../CreateNewUser/CreateNewUser.jsx';
 
-const Authorisation = ({user, setUser}) => {
+const Authorisation = () => {
   const [isLogin, setIsLogin] = React.useState(true);
 
   return (
@@ -16,7 +16,7 @@ const Authorisation = ({user, setUser}) => {
         </ul>
 
 
-        {isLogin ? <Login user={user} setUser={setUser}/> : <CreateNewUser user={user} setUser={setUser}/>}
+        {isLogin ? <Login/> : <CreateNewUser/>}
       </div>
 
     </div>
