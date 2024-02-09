@@ -74,7 +74,7 @@ const Nav = () => {
         <div className="navbar m-0 p-0 flex-row w-100">
           <ul className="navbar-nav me-0 ms-auto mb-0 d-flex align-items-center  flex-row">
             {topics.map(topic => (
-                <li className="nav-item p-1">
+                <li className="nav-item p-1" key={topic.slug}>
                   <NavLink to={'/topics/' + topic.slug} className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>{topic.slug}</NavLink>
                 </li>
               ),

@@ -13,9 +13,12 @@ const Comments = ({ articleId }) => {
 
   useEffect(() => {
     fetchCommentsByArticleId(articleId).then((items) => {
-      setComments(items.reverse());
+      if(items){
+        setComments(items.reverse());
+      }
+    }).finally(() => {
       setIsLoading(false);
-    });
+    })
   }, []);
 
   const removeComment = (commentId) => {
