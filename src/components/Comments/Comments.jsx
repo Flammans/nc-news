@@ -4,6 +4,7 @@ import { fetchCommentsByArticleId } from '../../utils/utils.js';
 import Comment from '../Comment/Comment.jsx';
 import CreateCommentForm from '../CreateCommentForm/CreateCommentForm.jsx';
 import comment from '../Comment/Comment.jsx';
+import Loader from '../Loader/Loader.jsx';
 
 const Comments = ({ articleId }) => {
 
@@ -23,7 +24,7 @@ const Comments = ({ articleId }) => {
 
   return (<>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : (
         <div className="container">
           <div className="be-comment-block">

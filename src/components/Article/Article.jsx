@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchArticleByArticleId, updateArticleVote } from '../../utils/utils.js';
 import Comments from '../Comments/Comments.jsx';
 import FormattedDate from '../FormattedDate/FormattedDate.jsx';
+import Loader from '../Loader/Loader.jsx';
 
 const Article = ({ article:data }) => {
   const { article_id } = useParams();
@@ -30,7 +31,7 @@ const Article = ({ article:data }) => {
   return (
     <>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader />
       ): ( article_id ? (
           <div className='container'>
             <article className="blog-post">
