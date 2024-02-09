@@ -15,83 +15,89 @@ export const fetchUserByUserName = (username) => {
   return api.get(`users/${encodeURIComponent(username)}`)
     .then((response) => {
       return response.data.user;
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log('Error fetching data', error);
-    })
+    });
 };
 
 export const createNewUser = (userName, userAvatar) => {
   const userData = {
     username: userName,
-    avatar_url: userAvatar
-  }
+    avatar_url: userAvatar,
+  };
   return api.post('users', userData).then((response) => {
     return response.data.user;
-  }).catch((error)=>{
+  }).catch((error) => {
     console.log('Error creating new user', error);
     return null;
-  })
-}
+  });
+};
 
-export const fetchArticles = (query = '') => {
-  return api.get(`articles?title=${encodeURIComponent(query)}`)
+export const fetchArticles = (params = {}) => {
+
+  return api.get(`articles`, {
+    params,
+  })
     .then((response) => {
-      return response.data.articles;
-    }).catch((error)=>{
+      return {
+        articles: response.data.articles,
+        total_count: response.data.total_count,
+      };
+    }).catch((error) => {
       console.log('Error fetching data', error);
-    })
+    });
 };
 
 export const fetchArticleByArticleId = (article_id) => {
   return api.get(`articles/${encodeURIComponent(article_id)}`)
     .then((response) => {
       return response.data.article;
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log('Error fetching data', error);
-    })
+    });
 };
 
 export const fetchCommentsByArticleId = (article_id) => {
   return api.get(`articles/${encodeURIComponent(article_id)}/comments`)
     .then((response) => {
       return response.data.comments;
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log('Error fetching data', error);
-    })
+    });
 };
 
 export const updateArticleVote = (article_id, inc_votes) => {
   return api.patch(`articles/${encodeURIComponent(article_id)}`, { inc_votes })
     .then((response) => {
       return response.data.article;
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log('Error update data', error);
-    })
+    });
 };
 
 export const updateCommentVote = (comment_id, inc_votes) => {
   return api.patch(`comments/${encodeURIComponent(comment_id)}`, { inc_votes })
     .then((response) => {
       return response.data.comment;
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log('Error update data', error);
-    })
+    });
 };
 
 export const createComment = (article_id, username, body) => {
   return api.post(`articles/${encodeURIComponent(article_id)}/comments`, { username, body })
     .then((response) => {
       return response.data.comment;
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log('Error create new comment', error);
-    })
+    });
 };
 
 export const deleteComment = (comment_id) => {
   return api.delete(`comments/${encodeURIComponent(comment_id)}`)
     .then((response) => {
       return response.status;
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log('Error update data', error);
-    })
+    });
 };
