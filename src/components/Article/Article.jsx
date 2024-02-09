@@ -5,18 +5,26 @@ import { fetchArticleByArticleId, updateArticleVote } from '../../utils/utils.js
 import Comments from '../Comments/Comments.jsx';
 import FormattedDate from '../FormattedDate/FormattedDate.jsx';
 import Loader from '../Loader/Loader.jsx';
+import NotFoundPage from '../NotFoundPage/NotFoundPage.jsx';
 
 const Article = ({ article:data }) => {
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [article, setArticle] = useState(data);
+  const [error, setError] = useState(null);
+
 
   useEffect(() => {
     if (!article) {
       fetchArticleByArticleId(article_id).then((item) => {
-        setArticle(item);
+        if(item){
+          setArticle(item);
+        }
+      }).catch((err) => {
+        setError(err.message)
+      }).finally(() => {
         setIsLoading(false);
-      });
+      })
     } else {
       setIsLoading(false);
     }
@@ -30,8 +38,8 @@ const Article = ({ article:data }) => {
 
   return (
     <>
-      {isLoading ? (
-        <Loader />
+      {isLoading || error ? (
+        !error ? (<Loader />) : (<NotFoundPage errorText={error}/>)
       ): ( article_id ? (
           <div className='container'>
             <article className="blog-post">

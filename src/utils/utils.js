@@ -43,18 +43,14 @@ export const fetchArticles = (params = {}) => {
         articles: response.data.articles,
         total_count: response.data.total_count,
       };
-    }).catch((error) => {
-      console.log('Error fetching data', error);
-    });
+    })
 };
 
 export const fetchArticleByArticleId = (article_id) => {
   return api.get(`articles/${encodeURIComponent(article_id)}`)
     .then((response) => {
       return response.data.article;
-    }).catch((error) => {
-      console.log('Error fetching data', error);
-    });
+    })
 };
 
 export const fetchCommentsByArticleId = (article_id) => {

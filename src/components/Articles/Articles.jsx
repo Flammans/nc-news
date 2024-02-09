@@ -6,6 +6,7 @@ import { fetchArticles } from '../../utils/utils.js';
 import Loader from '../Loader/Loader.jsx';
 import Pagination from '../Pagination/Pagination.jsx';
 import {Dropdown} from 'bootstrap';
+import NotFoundPage from '../NotFoundPage/NotFoundPage.jsx';
 
 const Articles = () => {
 
@@ -20,6 +21,7 @@ const Articles = () => {
   const [order, setOrder] = useState('ASC');
   const [sortBy, setSortBy] = useState('created_at');
   const [sortByPlaceholder, setSortByPlaceholder] = useState('Date');
+  const [error, setError] = useState(null);
 
   const location = useLocation();
 
@@ -35,6 +37,10 @@ const Articles = () => {
       setArticlesCount(items.total_count);
       setPagesCount(Math.ceil(items.total_count / perPage));
       setIsLoading(false);
+    }).catch((err) => {
+      setError(err.message)
+    }).finally(() => {
+      setIsLoading(false);
     });
 
   }, [page, perPage, topic, order, sortBy]);
@@ -44,8 +50,8 @@ const Articles = () => {
   }, []);
 
   return (
-    isLoading ? (
-      <Loader />
+    isLoading || error ? (
+      !error ? (<Loader />) : (<NotFoundPage errorText={error}/>)
     ) : (
 
       <div className='row'>
