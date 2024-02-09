@@ -9,7 +9,7 @@ const Topics = () => {
 
   return (
     <div className={'main'}>
-      <h1 className={'page-title'}>Topic: {topic}</h1>
+      <h1 className={'page-title  mb-4'}>Topic: {topic}</h1>
       <Articles />
     </div>
   );

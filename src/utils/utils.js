@@ -101,3 +101,12 @@ export const deleteComment = (comment_id) => {
       console.log('Error update data', error);
     });
 };
+
+export const fetchTopics = () => {
+  return api.get('topics')
+    .then((response) => {
+      return response.data.topics;
+    }).catch((error) => {
+      console.log('Error fetching data', error);
+    });
+};
