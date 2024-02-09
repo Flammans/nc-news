@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchArticleByArticleId, updateArticleVote } from '../../utils/utils.js';
 import Comments from '../Comments/Comments.jsx';
 import FormattedDate from '../FormattedDate/FormattedDate.jsx';
+import Loader from '../Loader/Loader.jsx';
 
 const Article = ({ article:data }) => {
   const { article_id } = useParams();
@@ -30,7 +31,7 @@ const Article = ({ article:data }) => {
   return (
     <>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader />
       ): ( article_id ? (
           <div className='container'>
             <article className="blog-post">
@@ -63,8 +64,10 @@ const Article = ({ article:data }) => {
           <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div className="col p-4 d-flex flex-column position-static">
               <strong className="d-inline-block mb-2 text-primary-emphasis">{article.topic}</strong>
-              <h3 className="mb-0">{article.title}</h3>
-              <div className="mb-1 text-body-secondary"><FormattedDate isoDateTime={article.created_at}/></div>
+              <h3 className="mb-4">{article.title}</h3>
+              <b className="d-inline-block text-primary-emphasis opacity-50">Comments :{article.comment_count}</b>
+              <b className="d-inline-block text-primary-emphasis opacity-50">Votes: {article.comment_count}</b>
+              <b className="mb-1 text-body-secondary opacity-50 article-card-author"><FormattedDate isoDateTime={article.created_at}/> by {article.author}</b>
             </div>
             <div className="col-auto d-none d-md-flex">
               <picture className="bd-placeholder-img">

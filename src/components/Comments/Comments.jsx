@@ -4,6 +4,7 @@ import { fetchCommentsByArticleId } from '../../utils/utils.js';
 import Comment from '../Comment/Comment.jsx';
 import CreateCommentForm from '../CreateCommentForm/CreateCommentForm.jsx';
 import comment from '../Comment/Comment.jsx';
+import Loader from '../Loader/Loader.jsx';
 
 const Comments = ({ articleId }) => {
 
@@ -12,9 +13,12 @@ const Comments = ({ articleId }) => {
 
   useEffect(() => {
     fetchCommentsByArticleId(articleId).then((items) => {
-      setComments(items.reverse());
+      if(items){
+        setComments(items.reverse());
+      }
+    }).finally(() => {
       setIsLoading(false);
-    });
+    })
   }, []);
 
   const removeComment = (commentId) => {
@@ -23,7 +27,7 @@ const Comments = ({ articleId }) => {
 
   return (<>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : (
         <div className="container">
           <div className="be-comment-block">

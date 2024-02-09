@@ -21,3 +21,8 @@
         border-right: 2px solid var(--dark-blue);
     }
 }
+#root{
+    & > .authorisation{
+        min-height: calc(100vh - 240px);
+    }
+}

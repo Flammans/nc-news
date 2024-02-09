@@ -7,7 +7,7 @@ const Authorisation = () => {
   const [isLogin, setIsLogin] = React.useState(true);
 
   return (
-    <div className={'main authorisation'}>
+    <div className={'authorisation'}>
 
       <div className="container">
         <ul className="tabs-menu">
